@@ -126,4 +126,5 @@ export interface WorldEventPhoto {
 	date?: string;
 	dates?: Record<string, string>;
 	alt: string;
+	recapPath?: string;
 }

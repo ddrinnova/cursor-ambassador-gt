@@ -65,32 +65,32 @@ const PastEvents: React.FC = () => {
 					return (
 						<motion.div key={event.id} variants={itemVariants}>
 							<Link href={event.recapPath} className="block group">
-								<div className="relative bg-[#1B1913] border border-cursor-border rounded-none sm:rounded-md overflow-hidden transition-all duration-300 hover:border-[#f54e00]/50 hover:shadow-[0_0_30px_rgba(245,78,0,0.12)]">
+								<div className="relative bg-[#1B1913] border border-cursor-border rounded-none sm:rounded-md overflow-hidden transition-all duration-300 hover:border-[#f54e00]/50 hover:shadow-[0_0_30px_rgba(245,78,0,0.12)] flex flex-col sm:flex-row">
 									{/* Glow backdrop */}
 									<div className="pointer-events-none absolute -inset-px sm:rounded-md bg-[radial-gradient(ellipse_at_bottom,rgba(245,78,0,0.06),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 									{event.thumbnail ? (
-										<div className="relative">
+										<div className="relative w-full sm:w-[280px] md:w-[360px] shrink-0">
 											<div
-												className={`aspect-[2/1] overflow-hidden ${hasGallery ? 'grid grid-cols-3 gap-1' : ''}`}
+												className={`aspect-2/1 sm:aspect-auto sm:h-full overflow-hidden ${hasGallery ? 'grid grid-cols-3 gap-1' : ''}`}
 											>
-												<div className={`relative ${hasGallery ? 'col-span-2' : ''}`}>
+												<div className={`relative ${hasGallery ? 'col-span-2' : ''} sm:h-full`}>
 													<Image
 														src={event.thumbnail}
 														alt={event.title}
 														fill
 														className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-														sizes="(max-width: 768px) 100vw, 60vw"
+														sizes="(max-width: 640px) 100vw, 360px"
 													/>
 												</div>
 												{hasGallery &&
 													event.galleryImages!.slice(0, 2).map((img, i) => (
-														<div key={i} className="relative">
+														<div key={i} className="relative sm:h-full">
 															<Image
 																src={img}
 																alt=""
 																fill
 																className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-																sizes="(max-width: 768px) 33vw, 20vw"
+																sizes="(max-width: 640px) 33vw, 120px"
 															/>
 														</div>
 													))}
@@ -110,9 +110,11 @@ const PastEvents: React.FC = () => {
 										</div>
 									) : null}
 
-									<div className="px-5 py-4">
-										<h3 className="text-lg text-cursor-text font-medium mb-1.5">{event.title}</h3>
-										<div className="flex flex-wrap items-center gap-3 text-sm text-cursor-text-muted mb-1.5">
+									<div className="px-5 py-5 sm:p-6 flex flex-col justify-center grow">
+										<h3 className="text-lg md:text-xl text-cursor-text font-medium mb-1.5">
+											{locale === 'en' ? event.title : (event.titleLocal ?? event.title)}
+										</h3>
+										<div className="flex flex-wrap items-center gap-3 text-sm text-cursor-text-muted mb-3">
 											<div className="flex items-center gap-1.5">
 												<Calendar className="w-4 h-4" />
 												<span>{displayDate}</span>
@@ -126,7 +128,7 @@ const PastEvents: React.FC = () => {
 												</div>
 											) : null}
 										</div>
-										<div className="flex items-center gap-2 text-sm text-[#f54e00]">
+										<div className="flex items-center gap-2 text-sm text-[#f54e00] mt-2">
 											<span>{t('home.viewRecap')}</span>
 											<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200 ease-out" />
 										</div>

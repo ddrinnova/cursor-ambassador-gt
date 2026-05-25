@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import EventRecap from '@/components/EventRecap';
 import JsonLd from '@/components/JsonLd';
 import { recapsBySlug } from '@/content/recaps';
@@ -69,8 +71,12 @@ export default async function RecapPage({ params }: RecapPageProps) {
 	return (
 		<main className="min-h-screen bg-cursor-bg text-cursor-text">
 			{jsonLd && <JsonLd data={jsonLd} />}
-			<div className="max-w-5xl mx-auto px-6 py-12">
+			<Navbar />
+			<div className="max-w-6xl mx-auto px-6 pt-28 pb-16">
 				<EventRecap recap={recap} />
+				<div className="mt-16 pt-8 border-t border-cursor-border">
+					<Footer />
+				</div>
 			</div>
 		</main>
 	);

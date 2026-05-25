@@ -1,6 +1,36 @@
 {
 	"nav": {
-		"joinUs": "Join us"
+		"joinUs": "Join us",
+		"upcomingEvents": "Upcoming Events",
+		"pastEvents": "Past Events",
+		"communityName": "Guatemala",
+		"toggleMenu": "Toggle menu"
+	},
+	"hero": {
+		"title": "Join the Cursor Guatemala community",
+		"subtitle": "Explore and connect with the Cursor Guatemala community at meetups, hackathons, coworking sessions, and more.",
+		"joinNow": "Join now",
+		"exploreEvents": "Explore events"
+	},
+	"activities": {
+		"heading": "What we're doing in Guatemala.",
+		"subheading": "From a table at a café to a finished project over the weekend. That's how things happen at Cursor Guatemala events.",
+		"cafeCursor": {
+			"title": "Café Cursor",
+			"description": "We meet at local cafés to code together as a community. Come collaborate with local developers, enjoy good coffee, and earn Cursor credits."
+		},
+		"workshops": {
+			"title": "Workshops",
+			"description": "Hands-on learning sessions led by community professionals. Master advanced workflows and learn to unlock the full potential of Cursor."
+		},
+		"meetups": {
+			"title": "Meetups",
+			"description": "In-person events to connect with Guatemala's tech ecosystem. Enjoy short talks, live demos, and networking."
+		},
+		"hackathons": {
+			"title": "Hackathons",
+			"description": "Weekend-long build competitions. Design and launch real projects, win prizes, and team up with other professionals across the country."
+		}
 	},
 	"home": {
 		"featured": "Featured",
@@ -43,7 +73,10 @@
 		"closeGallery": "Close gallery",
 		"prevPhoto": "Previous photo",
 		"nextPhoto": "Next photo",
-		"photoLabel": "Photo {index} of {total}"
+		"photoLabel": "Photo {index} of {total}",
+		"backHome": "Back to home",
+		"hostedAt": "Hosted at",
+		"photoGallery": "Photo gallery"
 	},
 	"photos": {
 		"title": "A note on photos",
@@ -67,8 +100,16 @@
 		"sameNumber": "the same number"
 	},
 	"worldEvents": {
-		"title": "Cafe Cursor around the world",
-		"subtitle": "Same day, different timezones",
-		"description": "Cursor users are building together worldwide. Even with timezone differences, we are one community."
+		"title": "Cursor Guatemala in action",
+		"subtitle": "From Guatemala City to Antigua",
+		"description": "From Guatemala City to Antigua, the Cursor community is growing. Meetups, hackathons, and cafés — together we're building the future.",
+		"carouselDescription": "Highlights and moments from our local Cursor community in {location}. A look at the gatherings where we share knowledge and drive tech forward.",
+		"galleryLabel": "Event Gallery",
+		"prevImage": "Previous image",
+		"nextImage": "Next image"
+	},
+	"notFound": {
+		"message": "This page doesn't exist.",
+		"backHome": "Back to {communityName}"
 	}
 }

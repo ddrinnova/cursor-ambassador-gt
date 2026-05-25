@@ -1,10 +1,40 @@
 {
 	"nav": {
-		"joinUs": "Unete"
+		"joinUs": "Únete",
+		"upcomingEvents": "Próximos Eventos",
+		"pastEvents": "Eventos Pasados",
+		"communityName": "Guatemala",
+		"toggleMenu": "Abrir menú"
+	},
+	"hero": {
+		"title": "Únete a la comunidad de Cursor Guatemala",
+		"subtitle": "Explora y conecta con la comunidad de Cursor Guatemala en meetups, hackathons, coworking y más.",
+		"joinNow": "Únete ahora",
+		"exploreEvents": "Explora eventos"
+	},
+	"activities": {
+		"heading": "Lo que estamos haciendo en Guatemala.",
+		"subheading": "De una mesa en una cafetería a un proyecto terminado el fin de semana. Así pasan las cosas en los eventos de Cursor Guatemala.",
+		"cafeCursor": {
+			"title": "Café Cursor",
+			"description": "Nos reunimos en cafeterías locales para programar en comunidad. Ven a colaborar con desarrolladores locales, comparte un buen café y obtén créditos de Cursor."
+		},
+		"workshops": {
+			"title": "Workshops",
+			"description": "Sesiones de aprendizaje práctico lideradas por profesionales de la comunidad. Domina flujos de trabajo avanzados y aprende a explotar el potencial de Cursor."
+		},
+		"meetups": {
+			"title": "Meetups",
+			"description": "Eventos presenciales para conectar con el ecosistema de tecnología en Guatemala. Disfruta de charlas breves, demostraciones técnicas y networking."
+		},
+		"hackathons": {
+			"title": "Hackathons",
+			"description": "Competencias de desarrollo durante todo un fin de semana. Diseña y lanza proyectos reales, gana premios y forma equipo con otros profesionales del país."
+		}
 	},
 	"home": {
 		"featured": "Destacado",
-		"upcomingEvents": "Proximos Eventos",
+		"upcomingEvents": "Próximos Eventos",
 		"upcomingHeading": "Lo Que Viene",
 		"register": "Registrarse",
 		"pastEvents": "Eventos Pasados",
@@ -23,11 +53,11 @@
 		"community": "Cursor Community",
 		"allEvents": "Todos los eventos en Luma",
 		"madeWith": "Hecho con Cursor por ambassadors en Guatemala",
-		"joinNext": "Unete al proximo evento",
+		"joinNext": "Únete al próximo evento",
 		"followUs": "Sigue a Cursor en X"
 	},
 	"featured": {
-		"defaultDescription": "Un taller practico para builders que quieren aprender Cursor con flujos de trabajo reales."
+		"defaultDescription": "Un taller práctico para builders que quieren aprender Cursor con flujos de trabajo reales."
 	},
 	"recap": {
 		"title": "Recap del evento",
@@ -40,35 +70,46 @@
 		"gallerySubtitle": "{count} fotos del evento",
 		"photoCredits": "Créditos de fotos:",
 		"openPhoto": "Abrir foto {index}",
-		"closeGallery": "Cerrar galeria",
+		"closeGallery": "Cerrar galería",
 		"prevPhoto": "Foto anterior",
 		"nextPhoto": "Siguiente foto",
-		"photoLabel": "Foto {index} de {total}"
+		"photoLabel": "Foto {index} de {total}",
+		"backHome": "Volver al inicio",
+		"hostedAt": "Organizado en",
+		"photoGallery": "Galería de fotos"
 	},
 	"photos": {
 		"title": "Nota sobre fotos",
 		"description": "Tomaremos fotos y videos durante el evento para redes sociales y contenido futuro de Cursor Community.",
 		"preference": "Si prefieres no salir en fotos:",
-		"option1": "Avisale al organizador cuando llegues",
+		"option1": "Avísale al organizador cuando llegues",
 		"option2": "Respetaremos tu preferencia",
-		"thanks": "Gracias por tu comprension."
+		"thanks": "Gracias por tu comprensión."
 	},
 	"matchmaking": {
-		"title": "Quieres conocer gente nueva?",
-		"howItWorks": "Como funciona",
+		"title": "¿Quieres conocer gente nueva?",
+		"howItWorks": "Cómo funciona",
 		"step1": "Llega a la mesa del host y toma una {numberCard} (1-10)",
 		"step2": "Encuentra a otros con el {sameNumber}",
-		"step3": "Sientense juntos y trabajen",
+		"step3": "Siéntense juntos y trabajen",
 		"iceBreakers": "Para romper el hielo",
-		"question1": "\"Has usado Cursor antes?\"",
-		"question2": "\"Estas construyendo algo con Cursor?\"",
-		"question3": "\"Cual es tu feature favorito de Cursor?\"",
-		"numberCard": "tarjeta con numero al azar",
-		"sameNumber": "mismo numero"
+		"question1": "\"¿Has usado Cursor antes?\"",
+		"question2": "\"¿Estás construyendo algo con Cursor?\"",
+		"question3": "\"¿Cuál es tu feature favorito de Cursor?\"",
+		"numberCard": "tarjeta con número al azar",
+		"sameNumber": "mismo número"
 	},
 	"worldEvents": {
 		"title": "Cursor Guatemala en acción",
 		"subtitle": "Desde Ciudad de Guatemala hasta Antigua",
-		"description": "Desde Ciudad de Guatemala hasta Antigua, la comunidad Cursor está creciendo. Meetups, hackathons y cafés — juntos estamos construyendo el futuro."
+		"description": "Desde Ciudad de Guatemala hasta Antigua, la comunidad Cursor está creciendo. Meetups, hackathons y cafés — juntos estamos construyendo el futuro.",
+		"carouselDescription": "Momentos destacados e interacciones de nuestra comunidad local de Cursor en {location}. Una mirada a los encuentros donde compartimos conocimiento e impulsamos el desarrollo tecnológico.",
+		"galleryLabel": "Galería de Eventos",
+		"prevImage": "Imagen anterior",
+		"nextImage": "Siguiente imagen"
+	},
+	"notFound": {
+		"message": "Esta página no existe.",
+		"backHome": "Volver a {communityName}"
 	}
 }

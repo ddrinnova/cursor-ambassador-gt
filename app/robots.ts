@@ -1,17 +1,15 @@
 import { MetadataRoute } from 'next';
-
-const BASE_URL =
-	process.env.NEXT_PUBLIC_SITE_URL ||
-	(process.env.VERCEL_PROJECT_PRODUCTION_URL
-		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-		: 'https://example.com');
+import { getSiteUrl } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
+	const baseUrl = getSiteUrl();
+
 	return {
 		rules: {
 			userAgent: '*',
 			allow: '/',
 		},
-		sitemap: `${BASE_URL}/sitemap.xml`,
+		sitemap: `${baseUrl}/sitemap.xml`,
+		host: baseUrl,
 	};
 }

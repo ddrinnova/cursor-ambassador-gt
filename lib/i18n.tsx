@@ -1,79 +1,66 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
+import i18n from 'i18next';
+import { I18nextProvider, initReactI18next, useTranslation } from 'react-i18next';
 import { siteConfig } from '@/content/site.config';
 import { localeBundles } from '@/content/locales';
 
-interface TranslationTree {
-	[key: string]: string | TranslationTree;
+const resources = Object.fromEntries(
+	Object.entries(localeBundles).map(([lng, translation]) => [lng, { translation }]),
+);
+
+if (!i18n.isInitialized) {
+	i18n.use(initReactI18next).init({
+		resources,
+		lng: siteConfig.defaultLocale,
+		fallbackLng: siteConfig.defaultLocale,
+		interpolation: {
+			escapeValue: false,
+			prefix: '{',
+			suffix: '}',
+		},
+	});
 }
-
-const TRANSLATION_BUNDLES_BY_LOCALE: Record<string, TranslationTree> = {
-	...Object.fromEntries(Object.entries(localeBundles).map(([locale, bundle]) => [locale, bundle as TranslationTree])),
-};
-
-interface I18nContextType {
-	locale: string;
-	setLocale: (locale: string) => void;
-	t: (key: string, params?: Record<string, string>) => string;
-}
-
-const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 type I18nProviderProps = {
 	children: ReactNode;
 };
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
-	const [locale, setLocaleState] = useState<string>(siteConfig.defaultLocale);
-
 	useEffect(() => {
 		const savedLocale = localStorage.getItem('locale');
 		if (savedLocale && siteConfig.locales.includes(savedLocale)) {
-			setLocaleState(savedLocale);
+			void i18n.changeLanguage(savedLocale);
 		}
 	}, []);
 
-	const setLocale = (nextLocale: string) => {
-		if (!siteConfig.locales.includes(nextLocale)) {
-			return;
-		}
-		setLocaleState(nextLocale);
-		localStorage.setItem('locale', nextLocale);
-	};
+	useEffect(() => {
+		const syncLocale = (lng: string) => {
+			document.documentElement.lang = lng;
+			localStorage.setItem('locale', lng);
+		};
 
-	const t = (key: string, params?: Record<string, string>): string => {
-		const keys = key.split('.');
-		const activeTranslations = TRANSLATION_BUNDLES_BY_LOCALE[locale] ?? TRANSLATION_BUNDLES_BY_LOCALE.en;
+		syncLocale(i18n.language);
+		i18n.on('languageChanged', syncLocale);
+		return () => {
+			i18n.off('languageChanged', syncLocale);
+		};
+	}, []);
 
-		let value: string | TranslationTree | undefined = activeTranslations;
-		for (const k of keys) {
-			if (typeof value !== 'object' || value === null) {
-				value = undefined;
-				break;
-			}
-			value = value[k];
-		}
-
-		if (typeof value !== 'string') {
-			return key;
-		}
-
-		if (!params) {
-			return value;
-		}
-
-		return value.replace(/\{(\w+)\}/g, (match, paramKey) => params[paramKey] ?? match);
-	};
-
-	return <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>;
+	return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
 
 export function useI18n() {
-	const context = useContext(I18nContext);
-	if (!context) {
-		throw new Error('useI18n must be used within I18nProvider');
-	}
+	const { t, i18n: i18nInstance } = useTranslation();
 
-	return context;
+	return {
+		locale: i18nInstance.language,
+		setLocale: (nextLocale: string) => {
+			if (siteConfig.locales.includes(nextLocale)) {
+				void i18nInstance.changeLanguage(nextLocale);
+			}
+		},
+		t: (key: string, params?: Record<string, string>) => t(key, params),
+	};
 }
