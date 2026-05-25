@@ -3,7 +3,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import i18n from 'i18next';
 import { I18nextProvider, initReactI18next, useTranslation } from 'react-i18next';
-import { siteConfig } from '@/content/site.config';
+import { isLocale, siteConfig } from '@/content/site.config';
 import { localeBundles } from '@/content/locales';
 
 const resources = Object.fromEntries(
@@ -30,7 +30,7 @@ type I18nProviderProps = {
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 	useEffect(() => {
 		const savedLocale = localStorage.getItem('locale');
-		if (savedLocale && siteConfig.locales.includes(savedLocale)) {
+		if (savedLocale && isLocale(savedLocale)) {
 			void i18n.changeLanguage(savedLocale);
 		}
 	}, []);
@@ -57,7 +57,7 @@ export function useI18n() {
 	return {
 		locale: i18nInstance.language,
 		setLocale: (nextLocale: string) => {
-			if (siteConfig.locales.includes(nextLocale)) {
+			if (isLocale(nextLocale)) {
 				void i18nInstance.changeLanguage(nextLocale);
 			}
 		},

@@ -7,7 +7,7 @@ export const ambassadors: Ambassador[] = [
     photo: "/images/ambassadors/Diego .jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/diegodevgt/",
-      website: "https://cursorguatemala.com/",
+      website: "https://ddrinnova.com/",
     },
   },
   {
@@ -16,7 +16,7 @@ export const ambassadors: Ambassador[] = [
     photo: "/images/ambassadors/Vladimir .jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/dvrm/",
-      website: "https://cursorguatemala.com/",
+      website: "https://ddrinnova.com/",
     },
   },
   {
@@ -38,7 +38,7 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Misael Ordoñéz",
-    role: "Cursor Ambassador / Co-organizer",
+    role: "Community Builders / Co-organizer",
     photo: "/images/ambassadors/Misael.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/saeldeveloper",
@@ -47,7 +47,7 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Marvin Mazariegos ",
-    role: "Cursor Ambassador / Co-organizer",
+    role: "Community Builders / Co-organizer",
     photo: "/images/ambassadors/marvin.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/marvin-mazariegos",
