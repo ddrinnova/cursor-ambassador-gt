@@ -7,6 +7,12 @@ interface SlidePageProps {
 	params: Promise<{ id: string }>;
 }
 
+export function generateStaticParams() {
+	return Array.from({ length: totalExampleSlides }, (_, i) => ({
+		id: String(i + 1),
+	}));
+}
+
 export default async function SlidePage({ params }: SlidePageProps) {
 	const { id: idParam } = await params;
 	const id = Number(idParam);

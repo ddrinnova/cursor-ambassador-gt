@@ -11,6 +11,10 @@ interface RecapPageProps {
 	params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+	return Object.keys(recapsBySlug).map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({ params }: RecapPageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const recap = recapsBySlug[slug];
