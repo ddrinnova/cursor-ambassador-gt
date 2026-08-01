@@ -108,7 +108,7 @@ const UpcomingEvents: React.FC = () => {
 							) : null}
 							{isCoworkingDay ? (
 								<Link
-									href="/agenda"
+									href="/agenda/"
 									className="inline-flex items-center gap-2 border border-cursor-border text-cursor-text rounded-md px-5 py-2.5 text-sm font-medium hover:border-cursor-border-emphasis hover:bg-cursor-overlay transition-colors"
 								>
 									<CalendarDays className="w-3.5 h-3.5" />

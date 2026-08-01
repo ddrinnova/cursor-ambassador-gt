@@ -9,7 +9,7 @@ import LanguageToggle from '@/components/LanguageToggle'
 import { siteConfig } from '@/content/site.config'
 
 const NAV_LINKS = [
-  { href: '/agenda', key: 'nav.agenda' },
+  { href: '/agenda/', key: 'nav.agenda' },
   { href: '/#upcoming', key: 'nav.upcomingEvents' },
   { href: '/#recaps', key: 'nav.pastEvents' },
 ] as const
