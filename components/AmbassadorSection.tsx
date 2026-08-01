@@ -3,33 +3,74 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Globe, Linkedin } from 'lucide-react';
-import { siGithub, siX } from 'simple-icons';
 import { ambassadors } from '@/content/ambassadors';
 import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
+import type { Ambassador } from '@/lib/types';
 
-type BrandIconProps = {
-	iconPath: string;
+function primaryLink(links: Ambassador['links']) {
+	return links.linkedin ?? links.website ?? links.github ?? links.x;
+}
+
+type AvatarProps = {
+	ambassador: Ambassador;
 };
 
-const BrandIcon: React.FC<BrandIconProps> = ({ iconPath }) => {
-	return (
-		<svg viewBox="0 0 24 24" aria-hidden="true" className="w-4 h-4">
-			<path d={iconPath} fill="currentColor" />
-		</svg>
+const TeamAvatar: React.FC<AvatarProps> = ({ ambassador }) => {
+	const { t } = useI18n();
+	const href = primaryLink(ambassador.links);
+	const className =
+		'relative block w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border border-cursor-border bg-cursor-bg-dark transition-transform duration-300 group-hover:scale-110 group-hover:z-10 group-hover:border-cursor-border-emphasis focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cursor-accent-blue';
+	const groupLabel =
+		ambassador.group === 'builder'
+			? t('ambassadors.buildersLabel')
+			: t('ambassadors.ambassadorsLabel');
+	const ariaLabel = [ambassador.name, groupLabel, ambassador.role].filter(Boolean).join(', ');
+
+	const photo = (
+		<Image
+			src={ambassador.photo}
+			alt={ambassador.name}
+			fill
+			className="object-cover"
+			style={{ objectPosition: ambassador.photoPosition ?? 'center top' }}
+			sizes="112px"
+		/>
 	);
-};
 
-type SocialIconProps = {
-	kind: 'x' | 'linkedin' | 'github' | 'website';
-};
+	return (
+		<li className="relative group list-none shrink-0">
+			{href ? (
+				<a
+					href={href}
+					target="_blank"
+					rel="noopener noreferrer"
+					className={className}
+					aria-label={ariaLabel}
+				>
+					{photo}
+				</a>
+			) : (
+				<div className={className} aria-label={ariaLabel}>
+					{photo}
+				</div>
+			)}
 
-const SocialIcon: React.FC<SocialIconProps> = ({ kind }) => {
-	if (kind === 'x') return <BrandIcon iconPath={siX.path} />;
-	if (kind === 'linkedin') return <Linkedin className="w-4 h-4" />;
-	if (kind === 'github') return <BrandIcon iconPath={siGithub.path} />;
-	return <Globe className="w-4 h-4" />;
+			<div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 z-20 w-max max-w-[12rem] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-200">
+				<div className="rounded-md bg-cursor-surface border border-cursor-border px-2.5 py-1.5 text-center shadow-lg">
+					<p className="text-xs font-medium text-cursor-text leading-snug">
+						{ambassador.name.trim()}
+					</p>
+					<p className="text-[10px] text-cursor-text-muted leading-snug mt-0.5">{groupLabel}</p>
+					{ambassador.role ? (
+						<p className="text-[10px] text-cursor-text-faint leading-snug mt-0.5">
+							{ambassador.role}
+						</p>
+					) : null}
+				</div>
+			</div>
+		</li>
+	);
 };
 
 const AmbassadorSection: React.FC = () => {
@@ -39,6 +80,8 @@ const AmbassadorSection: React.FC = () => {
 		return null;
 	}
 
+	const loop = [...ambassadors, ...ambassadors, ...ambassadors, ...ambassadors];
+
 	return (
 		<motion.section
 			initial={{ opacity: 0, y: 20 }}
@@ -47,69 +90,27 @@ const AmbassadorSection: React.FC = () => {
 			transition={{ duration: 0.5 }}
 			className="mb-16"
 		>
-			<p className="text-xs uppercase tracking-wider text-cursor-text-muted font-medium mb-2">
-				{t('ambassadors.title', { communityName: siteConfig.communityName })}
+			<p className="text-xs uppercase tracking-wider text-cursor-text-muted font-medium mb-2 text-center">
+				{t('ambassadors.subtitle')}
 			</p>
-			<h2 className="text-2xl md:text-3xl font-bold text-cursor-text mb-6">
+			<h2 className="text-2xl md:text-3xl font-bold text-cursor-text mb-8 text-center">
 				{t('ambassadors.heading')}
 			</h2>
 
-			<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-				{ambassadors.map((ambassador, index) => {
-					const links = [
-						{ kind: 'x' as const, href: ambassador.links.x },
-						{ kind: 'linkedin' as const, href: ambassador.links.linkedin },
-						{ kind: 'github' as const, href: ambassador.links.github },
-						{ kind: 'website' as const, href: ambassador.links.website },
-					].filter((entry) => Boolean(entry.href));
+			<div className="relative overflow-hidden">
+				<div className="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-16 z-10 bg-gradient-to-r from-cursor-bg to-transparent" />
+				<div className="pointer-events-none absolute inset-y-0 right-0 w-10 md:w-16 z-10 bg-gradient-to-l from-cursor-bg to-transparent" />
 
-					return (
-						<motion.article
-							key={ambassador.name}
-							initial={{ opacity: 0, y: 10 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, margin: '-50px' }}
-							transition={{ duration: 0.3, delay: index * 0.07 }}
-							className="bg-cursor-bg-dark border border-cursor-border rounded-md p-5 group hover:border-cursor-accent-purple/30 hover:shadow-[0_0_15px_rgba(184,168,200,0.08)] transition-all duration-300"
-						>
-							<div className="flex items-center gap-4">
-								<div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cursor-border-emphasis">
-									<Image
-										src={ambassador.photo}
-										alt={ambassador.name}
-										fill
-										className="object-cover grayscale group-hover:grayscale-0 transition duration-500"
-										sizes="80px"
-									/>
-								</div>
-								<div>
-									<p className="text-cursor-text font-medium">{ambassador.name}</p>
-									{ambassador.role ? (
-										<p className="text-cursor-text-muted text-sm">{ambassador.role}</p>
-									) : null}
-								</div>
-							</div>
-
-							{links.length > 0 ? (
-								<div className="flex items-center gap-3 mt-4">
-									{links.map((link) => (
-										<a
-											key={`${ambassador.name}-${link.kind}`}
-											href={link.href}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="p-2 rounded border border-cursor-border text-cursor-text-muted hover:text-cursor-text hover:border-cursor-border-emphasis transition-colors"
-											aria-label={`${ambassador.name} ${link.kind}`}
-										>
-											<SocialIcon kind={link.kind} />
-										</a>
-									))}
-								</div>
-							) : null}
-						</motion.article>
-					);
-				})}
+				<ul className="team-marquee flex w-max items-start gap-6 md:gap-8 py-2 pb-16">
+					{loop.map((ambassador, index) => (
+						<TeamAvatar key={`${ambassador.name}-${index}`} ambassador={ambassador} />
+					))}
+				</ul>
 			</div>
+
+			<p className="mt-2 text-sm text-cursor-text-faint text-center">
+				{t('ambassadors.meta', { count: String(ambassadors.length) })}
+			</p>
 		</motion.section>
 	);
 };

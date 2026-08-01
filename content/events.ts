@@ -2,6 +2,129 @@ import { CursorEvent } from '@/lib/types';
 
 export const events: CursorEvent[] = [
 	{
+		id: 'cursor-coworking-day-guatemala',
+		title: 'Cursor Coworking Day',
+		titleLocal: 'Cursor Coworking Day Guatemala',
+		date: '2026-08-01',
+		displayDate: '1 de agosto de 2026',
+		displayDates: { en: 'August 1, 2026', es: '1 de agosto de 2026' },
+		time: '09:00 – 18:00',
+		capacity: 75,
+		location: 'Campus Tec · Mountain View · Nivel 2 · Salón 204, Ciudad de Guatemala',
+		description:
+			'Un día completo para developers, founders y builders que construyen con IA — no es un evento de slides, es un día real de trabajo, aprendizaje y comunidad. Incluye coworking, lightning talks, mentoring y networking.',
+		descriptions: {
+			en: 'A full day for developers, founders, and builders building with AI — not a slide event, but a real day of work, learning, and community. Includes coworking, lightning talks, mentoring, and networking.',
+			es: 'Un día completo para developers, founders y builders que construyen con IA — no es un evento de slides, es un día real de trabajo, aprendizaje y comunidad. Incluye coworking, lightning talks, mentoring y networking.',
+		},
+		lumaUrl: 'https://luma.com/cursor-xxan',
+		thumbnail: '/events/cursor-coworking-day-gt.png',
+		galleryImages: [
+			'/events/cursor-coworking-day-gt.png',
+			'/events/cursor-coworking-day-marvin.png',
+		],
+		status: 'upcoming',
+		host: {
+			name: 'DDR Innova',
+			logo: '/images/partners/ddr.png',
+			url: 'https://ddrinnova.com',
+		},
+		agenda: [
+			{
+				time: '09:00',
+				title: 'Doors Open & Check-in',
+				description: 'Registro, bienvenida, café y setup de workspace. Espacio de bienvenida con fotografía e impresoras térmicas.',
+			},
+			{
+				time: '09:30',
+				title: 'Apertura — ¿Por qué estamos aquí?',
+				description: 'Contexto rápido del mundo tech con IA y por qué Guatemala debe participar. Incluye AI Speed Networking.',
+			},
+			{
+				time: '10:00',
+				title: 'Charla 1 — Dominando Cursor / Del Contexto a la Acción',
+				speaker: 'Sael Developer',
+			},
+			{
+				time: '10:20',
+				title: 'Bloque 1 — Lightning Talks',
+				description: 'Espacio abierto para compartir lo que estás construyendo u opiniones sobre IA (5–7 min).',
+			},
+			{
+				time: '11:00',
+				title: 'Charla 2 — Harness your Agent',
+				description: 'Una breve historia de la evolución del desarrollo agéntico.',
+				speaker: 'Jordi Dimas',
+			},
+			{
+				time: '11:35',
+				title: 'Bloque 2 — Lightning Talks',
+				description: 'Continuación del open floor.',
+			},
+			{
+				time: '12:00',
+				title: 'Charla 3 — De Developer a AI Builder',
+				description: 'Lo que aprendí construyendo con IA desde Guatemala.',
+				speaker: 'Marvin Mazariegos',
+			},
+			{
+				time: '12:30',
+				title: 'Bloque 3 — Lightning Talks',
+				description: 'Continuación del open floor.',
+			},
+			{
+				time: '13:00',
+				title: 'Almuerzo + Networking',
+				description: 'Dinámica de comida, board games y Kahoot de IA.',
+			},
+			{
+				time: '14:00',
+				title: 'Lightning Talks',
+				description: 'Espacio abierto para que asistentes compartan con la comunidad.',
+			},
+			{
+				time: '14:30',
+				title: 'Charla 4 — Misión: Certifícate',
+				description: 'Consejos prácticos para perderle el miedo a las certificaciones tech.',
+				speaker: 'Diego Cum',
+			},
+			{
+				time: '15:15',
+				title: 'Lightning Talks — Bloque B',
+			},
+			{
+				time: '15:45',
+				title: 'Charla 5 — Agentes con superpoderes',
+				description: 'Cómo pasar de un modelo de IA a un agente de IA.',
+				speaker: 'Diego Rosales',
+			},
+			{
+				time: '16:15',
+				title: 'Lightning Talks — Bloque C',
+			},
+			{
+				time: '16:30',
+				title: 'Build & Share',
+				description: 'Comparte lo que construiste durante el día: tools, agentes, proyectos o experimentos.',
+			},
+			{
+				time: '17:15',
+				title: 'Community Closing',
+				description: 'Agradecimientos, takeaways del día y reconocimiento a speakers y participantes.',
+			},
+			{
+				time: '17:35',
+				title: 'Próximos pasos',
+				description: 'Meetups futuros, comunidad Discord/WhatsApp e invitación a speakers.',
+			},
+			{
+				time: '17:45',
+				title: 'Foto oficial + Networking final',
+				description: 'Foto grupal y tiempo libre para intercambiar contactos.',
+			},
+		],
+	},
+	{
 		id: 'cursor-meetup-antigua',
 		title: 'Cursor Meetup Antigua',
 		titleLocal: 'Cursor Meetup Antigua Guatemala',

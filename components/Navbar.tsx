@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useI18n } from '@/lib/i18n'
 import LanguageToggle from '@/components/LanguageToggle'
 import { siteConfig } from '@/content/site.config'
 
 const NAV_LINKS = [
-  { href: 'https://luma.com/cursor-guatemala', key: 'nav.upcomingEvents' },
-  { href: '#recaps', key: 'nav.pastEvents' },
+  { href: '/agenda', key: 'nav.agenda' },
+  { href: '/#upcoming', key: 'nav.upcomingEvents' },
+  { href: '/#recaps', key: 'nav.pastEvents' },
 ] as const
 
 function useScrollState() {
@@ -58,7 +60,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/cursor-logo.svg"
               alt="Cursor"
@@ -70,7 +72,7 @@ export default function Navbar() {
             <span className="font-cursor text-base md:text-lg font-semibold uppercase tracking-wide text-cursor-text-secondary">
               {t('nav.communityName')}
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">

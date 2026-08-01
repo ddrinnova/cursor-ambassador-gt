@@ -3,8 +3,27 @@
 		"joinUs": "Únete",
 		"upcomingEvents": "Próximos Eventos",
 		"pastEvents": "Eventos Pasados",
+		"agenda": "Agenda",
 		"communityName": "Guatemala",
 		"toggleMenu": "Abrir menú"
+	},
+	"countdown": {
+		"live": "En curso",
+		"daysHours": "Faltan {days}d {hours}h",
+		"hours": "Faltan {hours} horas",
+		"minutes": "Faltan {minutes} min"
+	},
+	"agenda": {
+		"back": "Volver al inicio",
+		"eyebrow": "Cursor Coworking Day · Guatemala",
+		"talksEyebrow": "Charlas",
+		"talksHeading": "Speakers y temas",
+		"scheduleHeading": "Horario completo",
+		"downloadPdf": "Descargar agenda PDF",
+		"downloadingPdf": "Generando PDF…",
+		"flyersEyebrow": "Flyers",
+		"flyersHeading": "Material del evento",
+		"ctaHint": "Cupo limitado · asegurate tu lugar"
 	},
 	"hero": {
 		"title": "Únete a la comunidad de Cursor Guatemala",
@@ -37,6 +56,9 @@
 		"upcomingEvents": "Próximos Eventos",
 		"upcomingHeading": "Lo Que Viene",
 		"register": "Registrarse",
+		"agenda": "Agenda del día",
+		"viewAgenda": "Ver agenda",
+		"capacity": "{count} cupos",
 		"pastEvents": "Eventos Pasados",
 		"pastEventsHeading": "Recaps de Eventos",
 		"attendees": "{count} asistentes",
@@ -46,7 +68,11 @@
 	},
 	"ambassadors": {
 		"title": "Ambassadors de {communityName}",
-		"heading": "Conoce al Equipo"
+		"subtitle": "Ambassadors / Community Builders",
+		"heading": "Conoce al Equipo",
+		"ambassadorsLabel": "Ambassador",
+		"buildersLabel": "Community Builder",
+		"meta": "{count} en el equipo · pausa al hover"
 	},
 	"footer": {
 		"hostingPartners": "Partners y Venues",

@@ -1,9 +1,13 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, CalendarDays } from 'lucide-react';
 import { upcomingEvents } from '@/content/events';
+import { coworkingDay } from '@/content/coworking-day';
+import EventCountdown from '@/components/EventCountdown';
 import { useI18n } from '@/lib/i18n';
 
 const UpcomingEvents: React.FC = () => {
@@ -23,6 +27,10 @@ const UpcomingEvents: React.FC = () => {
 		});
 
 	const city = featured.location.split(',')[0].trim();
+	const description =
+		featured.descriptions?.[locale] ?? featured.description ?? featured.descriptions?.es;
+	const title = locale === 'es' && featured.titleLocal ? featured.titleLocal : featured.title;
+	const isCoworkingDay = featured.id === 'cursor-coworking-day-guatemala';
 
 	return (
 		<motion.section
@@ -48,29 +56,80 @@ const UpcomingEvents: React.FC = () => {
 				transition={{ duration: 0.4 }}
 				className="relative overflow-hidden bg-cursor-surface border border-cursor-border border-l-2 border-l-cursor-accent-blue rounded-lg p-5 mb-6"
 			>
-				{/* Glow backdrop */}
 				<div className="pointer-events-none absolute -inset-px rounded-lg bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,180,200,0.06),transparent_60%)]" />
-				<div className="flex items-center gap-2 text-sm text-cursor-text-muted mb-2">
-					<span className="relative flex h-2.5 w-2.5">
-						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cursor-accent-blue opacity-75" />
-						<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cursor-accent-blue" />
-					</span>
-					<span>{formatDate(featured.date, 'long')}</span>
-					<span className="text-cursor-text-faint">&middot;</span>
-					<span>{city}</span>
+
+				<div className="relative grid gap-5 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
+					<div>
+						<div className="flex flex-wrap items-center gap-2 text-sm text-cursor-text-muted mb-3">
+							<span className="relative flex h-2.5 w-2.5">
+								<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cursor-accent-blue opacity-75" />
+								<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cursor-accent-blue" />
+							</span>
+							<span>{formatDate(featured.date, 'long')}</span>
+							{featured.time ? (
+								<>
+									<span className="text-cursor-text-faint">&middot;</span>
+									<span>{featured.time}</span>
+								</>
+							) : null}
+							<span className="text-cursor-text-faint">&middot;</span>
+							<span>{city}</span>
+							{featured.capacity ? (
+								<>
+									<span className="text-cursor-text-faint">&middot;</span>
+									<span>{t('home.capacity', { count: String(featured.capacity) })}</span>
+								</>
+							) : null}
+						</div>
+
+						{isCoworkingDay ? (
+							<div className="mb-3">
+								<EventCountdown startsAt={coworkingDay.startsAt} />
+							</div>
+						) : null}
+
+						<h3 className="text-2xl font-bold text-cursor-text mb-3">{title}</h3>
+						{description ? (
+							<p className="text-sm text-cursor-text-muted leading-relaxed mb-4 max-w-xl">
+								{description}
+							</p>
+						) : null}
+						<div className="flex flex-wrap gap-3">
+							{featured.lumaUrl ? (
+								<a
+									href={featured.lumaUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-2 bg-cursor-text text-cursor-bg rounded-md px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+								>
+									{t('home.register')}
+									<ExternalLink className="w-3.5 h-3.5" />
+								</a>
+							) : null}
+							{isCoworkingDay ? (
+								<Link
+									href="/agenda"
+									className="inline-flex items-center gap-2 border border-cursor-border text-cursor-text rounded-md px-5 py-2.5 text-sm font-medium hover:border-cursor-border-emphasis hover:bg-cursor-overlay transition-colors"
+								>
+									<CalendarDays className="w-3.5 h-3.5" />
+									{t('home.viewAgenda')}
+								</Link>
+							) : null}
+						</div>
+					</div>
+
+					{featured.thumbnail ? (
+						<div className="relative aspect-[4/3] overflow-hidden rounded-md border border-cursor-border bg-black/40">
+							<Image
+								src={featured.thumbnail}
+								alt={title}
+								fill
+								className="object-cover object-top"
+								sizes="(max-width: 768px) 100vw, 420px"
+							/>
+						</div>
+					) : null}
 				</div>
-				<h3 className="text-2xl font-bold text-cursor-text mb-3">{featured.title}</h3>
-				{featured.lumaUrl ? (
-					<a
-						href={featured.lumaUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center gap-2 bg-cursor-text text-cursor-bg rounded-md px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
-					>
-						{t('home.register')}
-						<ExternalLink className="w-3.5 h-3.5" />
-					</a>
-				) : null}
 			</motion.div>
 
 			{/* Remaining events */}

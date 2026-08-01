@@ -1,16 +1,16 @@
 import { FeaturedResource } from '@/lib/types';
 
 export const featuredResource: FeaturedResource = {
-	title: 'Cursor Hackathon Guatemala 2026',
+	title: 'Cursor Coworking Day',
 	description:
-		'El hackathon de IA más grande de Centroamérica. Equipos de 2-4 personas construyeron prototipos reales usando herramientas de IA en solo 7 horas.',
-	href: '/recaps/cursor-hackathon-guatemala',
-	ctaLabel: 'Ver Recap',
+		'Sábado 1 de agosto · Campus Tec. Un día completo de coworking, lightning talks y comunidad AI en Guatemala. Cupo limitado a 75 lugares.',
+	href: 'https://luma.com/cursor-xxan',
+	ctaLabel: 'Asegurar lugar',
 	translations: {
 		en: {
 			description:
-				'The largest AI hackathon in Central America. Teams of 2-4 people built real prototypes using AI tools in just 7 hours.',
-			ctaLabel: 'View Recap',
+				'Saturday, August 1 · Campus Tec. A full day of coworking, lightning talks, and AI community in Guatemala. Limited to 75 spots.',
+			ctaLabel: 'Secure your spot',
 		},
 	},
 };

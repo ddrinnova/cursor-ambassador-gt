@@ -32,13 +32,25 @@ const FeaturedSection: React.FC = () => {
 				{description || t('featured.defaultDescription')}
 			</p>
 
-			<Link
-				href={featuredResource.href}
-				className="inline-flex items-center gap-2 px-4 py-2 bg-cursor-text text-cursor-bg rounded-md hover:bg-cursor-text-muted transition-colors text-sm font-medium"
-			>
-				{ctaLabel || t('home.viewRecap')}
+			{featuredResource.href.startsWith('http') ? (
+				<a
+					href={featuredResource.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="inline-flex items-center gap-2 px-4 py-2 bg-cursor-text text-cursor-bg rounded-md hover:bg-cursor-text-muted transition-colors text-sm font-medium"
+				>
+					{ctaLabel || t('home.viewRecap')}
+					<ArrowRight className="w-4 h-4" />
+				</a>
+			) : (
+				<Link
+					href={featuredResource.href}
+					className="inline-flex items-center gap-2 px-4 py-2 bg-cursor-text text-cursor-bg rounded-md hover:bg-cursor-text-muted transition-colors text-sm font-medium"
+				>
+					{ctaLabel || t('home.viewRecap')}
 					<ArrowRight className="w-4 h-4" />
 				</Link>
+			)}
 			</div>
 		</motion.section>
 	);

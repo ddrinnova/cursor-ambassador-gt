@@ -3,8 +3,10 @@ import { Ambassador } from "@/lib/types";
 export const ambassadors: Ambassador[] = [
   {
     name: "Diego Andrés Cum Chávez",
-    role: "Cursor Ambassador / Expert & Community Lead",
+    role: "Expert & Community Lead",
+    group: "ambassador",
     photo: "/images/ambassadors/Diego .jpeg",
+    photoPosition: "center 42%",
     links: {
       linkedin: "https://www.linkedin.com/in/diegodevgt/",
       website: "https://ddrinnova.com/",
@@ -12,7 +14,8 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Diego V. Rosales",
-    role: "Cursor Ambassador / Co-organizer & CoFounder",
+    role: "Co-organizer & CoFounder",
+    group: "ambassador",
     photo: "/images/ambassadors/Vladimir .jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/dvrm/",
@@ -21,7 +24,8 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Eleanor Menchu Melgar",
-    role: "Cursor Ambassador / Co-organizer",
+    role: "Co-organizer",
+    group: "ambassador",
     photo: "/images/ambassadors/Eleonor.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/eleanormm2/",
@@ -29,7 +33,8 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Oscar Morales",
-    role: "Cursor Ambassador / Co-organizer",
+    role: "Co-organizer",
+    group: "ambassador",
     photo: "/images/ambassadors/oscar.jpeg",
     links: {
       linkedin: "https://www.linkedin.com/in/theoscarvibes/",
@@ -38,17 +43,30 @@ export const ambassadors: Ambassador[] = [
   },
   {
     name: "Misael Ordoñéz",
-    role: "Community Builders / Co-organizer",
+    role: "Co-organizer",
+    group: "builder",
     photo: "/images/ambassadors/Misael.jpeg",
+    photoPosition: "center 18%",
     links: {
       linkedin: "https://www.linkedin.com/in/saeldeveloper",
       website: "https://www.onacode.agency/",
     },
   },
   {
-    name: "Marvin Mazariegos ",
-    role: "Community Builders / Co-organizer",
-    photo: "/images/ambassadors/marvin.jpeg",
+    name: "Jordi Dimas",
+    role: "Co-organizer",
+    group: "builder",
+    photo: "/images/ambassadors/jordi.jpeg",
+    links: {
+      linkedin: "https://www.linkedin.com/in/jordidimass/",
+    },
+  },
+  {
+    name: "Marvin Mazariegos",
+    role: "Co-organizer",
+    group: "builder",
+    photo: "/images/ambassadors/marvin-new.jpeg",
+    photoPosition: "center center",
     links: {
       linkedin: "https://www.linkedin.com/in/marvin-mazariegos",
     },

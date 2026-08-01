@@ -1,5 +1,12 @@
 export type LocaleCode = string;
 
+export interface EventAgendaItem {
+	time: string;
+	title: string;
+	description?: string;
+	speaker?: string;
+}
+
 export interface CursorEvent {
 	id: string;
 	title: string;
@@ -7,12 +14,17 @@ export interface CursorEvent {
 	date: string;
 	displayDate: string;
 	displayDates?: Record<string, string>;
+	time?: string;
 	attendees?: number;
+	capacity?: number;
 	location: string;
+	description?: string;
+	descriptions?: Record<string, string>;
 	lumaUrl?: string;
 	recapPath?: string;
 	thumbnail?: string;
 	galleryImages?: string[];
+	agenda?: EventAgendaItem[];
 	status: 'upcoming' | 'past';
 	host?: { name: string; logo: string; url?: string };
 }
@@ -24,10 +36,15 @@ export interface SocialLinks {
 	website?: string;
 }
 
+export type TeamGroup = 'ambassador' | 'builder';
+
 export interface Ambassador {
 	name: string;
 	role?: string;
+	group: TeamGroup;
 	photo: string;
+	/** CSS object-position for avatar crop, e.g. "center 30%" */
+	photoPosition?: string;
 	links: SocialLinks;
 }
 

@@ -3,8 +3,27 @@
 		"joinUs": "Join us",
 		"upcomingEvents": "Upcoming Events",
 		"pastEvents": "Past Events",
+		"agenda": "Agenda",
 		"communityName": "Guatemala",
 		"toggleMenu": "Toggle menu"
+	},
+	"countdown": {
+		"live": "Happening now",
+		"daysHours": "{days}d {hours}h left",
+		"hours": "{hours} hours left",
+		"minutes": "{minutes} min left"
+	},
+	"agenda": {
+		"back": "Back to home",
+		"eyebrow": "Cursor Coworking Day · Guatemala",
+		"talksEyebrow": "Talks",
+		"talksHeading": "Speakers & topics",
+		"scheduleHeading": "Full schedule",
+		"downloadPdf": "Download agenda PDF",
+		"downloadingPdf": "Generating PDF…",
+		"flyersEyebrow": "Flyers",
+		"flyersHeading": "Event materials",
+		"ctaHint": "Limited spots · secure yours"
 	},
 	"hero": {
 		"title": "Join the Cursor Guatemala community",
@@ -37,6 +56,9 @@
 		"upcomingEvents": "Upcoming Events",
 		"upcomingHeading": "What's Next",
 		"register": "Register",
+		"agenda": "Day agenda",
+		"viewAgenda": "View agenda",
+		"capacity": "{count} spots",
 		"pastEvents": "Past Events",
 		"pastEventsHeading": "Event Recaps",
 		"attendees": "{count} attendees",
@@ -46,7 +68,11 @@
 	},
 	"ambassadors": {
 		"title": "Cursor {communityName} ambassadors",
-		"heading": "Meet the Team"
+		"subtitle": "Ambassadors / Community Builders",
+		"heading": "Meet the Team",
+		"ambassadorsLabel": "Ambassador",
+		"buildersLabel": "Community Builder",
+		"meta": "{count} on the team · pause on hover"
 	},
 	"footer": {
 		"hostingPartners": "Hosting Partners",
