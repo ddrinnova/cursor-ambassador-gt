@@ -47,6 +47,22 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
         run: |
+          set -euo pipefail
+          ENDPOINT="https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com"
+
           aws s3 sync out/ "s3://${R2_BUCKET}/" \
-            --endpoint-url "https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com" \
+            --endpoint-url "$ENDPOINT" \
             --delete
+
+          # R2 custom domains don't resolve directory index.html.
+          # Upload extensionless HTML copies so /agenda and /recaps/slug work.
+          while IFS= read -r -d '' file; do
+            rel="${file#out/}"
+            [[ "$rel" == "index.html" || "$rel" == "404.html" || "$rel" == "_not-found.html" ]] && continue
+            key="${rel%.html}"
+            echo "Publishing pretty URL: /$key"
+            aws s3 cp "$file" "s3://${R2_BUCKET}/${key}" \
+              --endpoint-url "$ENDPOINT" \
+              --content-type "text/html; charset=utf-8" \
+              --cache-control "public, max-age=0, must-revalidate"
+          done < <(find out -type f -name '*.html' -print0)

@@ -12,10 +12,10 @@ export const events: CursorEvent[] = [
 		capacity: 75,
 		location: 'Campus Tec · Mountain View · Nivel 2 · Salón 204, Ciudad de Guatemala',
 		description:
-			'Un día completo para developers, founders y builders que construyen con IA — no es un evento de slides, es un día real de trabajo, aprendizaje y comunidad. Incluye coworking, lightning talks, mentoring y networking.',
+			'Un día completo para developers, founders y builders que construyen con IA: charlas, coworking, lightning talks, mentoring y comunidad en un solo espacio.',
 		descriptions: {
-			en: 'A full day for developers, founders, and builders building with AI — not a slide event, but a real day of work, learning, and community. Includes coworking, lightning talks, mentoring, and networking.',
-			es: 'Un día completo para developers, founders y builders que construyen con IA — no es un evento de slides, es un día real de trabajo, aprendizaje y comunidad. Incluye coworking, lightning talks, mentoring y networking.',
+			en: 'A full day for developers, founders, and builders who create with AI: talks, coworking, lightning talks, mentoring, and community in one space.',
+			es: 'Un día completo para developers, founders y builders que construyen con IA: charlas, coworking, lightning talks, mentoring y comunidad en un solo espacio.',
 		},
 		lumaUrl: 'https://luma.com/cursor-xxan',
 		thumbnail: '/events/cursor-coworking-day-gt.png',

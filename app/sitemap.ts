@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 1,
 		},
 		{
-			url: `${baseUrl}/agenda/`,
+			url: `${baseUrl}/agenda`,
 			lastModified: new Date(),
 			changeFrequency: 'weekly' as const,
 			priority: 0.9,

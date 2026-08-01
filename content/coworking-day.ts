@@ -28,8 +28,8 @@ export const coworkingDay = {
 	capacity: 75,
 	lumaUrl: 'https://luma.com/cursor-xxan',
 	description: {
-		es: 'Un día completo para developers, founders y builders que construyen con IA — no es un evento de slides, es un día real de trabajo, aprendizaje y comunidad.',
-		en: 'A full day for developers, founders, and builders building with AI — not a slide event, but a real day of work, learning, and community.',
+		es: 'Un día completo para developers, founders y builders que construyen con IA: charlas, coworking, lightning talks, mentoring y comunidad en un solo espacio.',
+		en: 'A full day for developers, founders, and builders who create with AI: talks, coworking, lightning talks, mentoring, and community in one space.',
 	},
 	speakers: [
 		{
