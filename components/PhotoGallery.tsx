@@ -4,26 +4,23 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import i18n from "i18next";
 import { GalleryPhoto } from "@/lib/types";
 import { useI18n } from "@/lib/i18n";
 
 interface PhotoGalleryProps {
   photos: GalleryPhoto[];
   embedded?: boolean;
-  forceLocale?: string;
+  /** Renders the gallery title as h3 when the section already owns an h2. */
+  headingLevel?: "h2" | "h3";
 }
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   photos,
   embedded = false,
-  forceLocale,
+  headingLevel = "h2",
 }) => {
-  const { t: activeT } = useI18n();
-  const t = (key: string, params?: Record<string, string>) =>
-    forceLocale
-      ? String(i18n.t(key, { ...params, lng: forceLocale }))
-      : activeT(key, params);
+  const { t } = useI18n();
+  const Heading = headingLevel;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -37,7 +34,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({
     <>
       <div className="flex items-baseline justify-between gap-4 mb-6">
         <div>
-          <h2
+          <Heading
             className={
               embedded
                 ? "text-lg font-semibold text-cursor-text"
@@ -45,7 +42,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({
             }
           >
             {t("recap.galleryTitle")}
-          </h2>
+          </Heading>
           <p className="text-cursor-text-muted text-sm mt-1">
             {t("recap.gallerySubtitle", { count: String(photos.length) })}
           </p>

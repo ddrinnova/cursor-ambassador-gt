@@ -1,66 +1,36 @@
 'use client';
 
-import React, { ReactNode, useEffect } from 'react';
-import i18n from 'i18next';
-import { I18nextProvider, initReactI18next, useTranslation } from 'react-i18next';
-import { isLocale, siteConfig } from '@/content/site.config';
-import { localeBundles } from '@/content/locales';
+import React, { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
+import { siteConfig } from '@/content/site.config';
+import { createTranslator, languageTags, type Locale, type Translate } from '@/lib/locale';
 
-const resources = Object.fromEntries(
-	Object.entries(localeBundles).map(([lng, translation]) => [lng, { translation }]),
-);
+type I18nValue = {
+	locale: Locale;
+	t: Translate;
+};
 
-if (!i18n.isInitialized) {
-	i18n.use(initReactI18next).init({
-		resources,
-		lng: siteConfig.defaultLocale,
-		fallbackLng: siteConfig.defaultLocale,
-		interpolation: {
-			escapeValue: false,
-			prefix: '{',
-			suffix: '}',
-		},
-	});
-}
+const I18nContext = createContext<I18nValue>({
+	locale: siteConfig.defaultLocale,
+	t: createTranslator(siteConfig.defaultLocale),
+});
 
 type I18nProviderProps = {
+	locale: Locale;
 	children: ReactNode;
 };
 
-export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
+export const I18nProvider: React.FC<I18nProviderProps> = ({ locale, children }) => {
+	const value = useMemo(() => ({ locale, t: createTranslator(locale) }), [locale]);
+
+	// The root layout is shared by both language trees, so the document language
+	// is corrected here for the non-default locale.
 	useEffect(() => {
-		const savedLocale = localStorage.getItem('locale');
-		if (savedLocale && isLocale(savedLocale)) {
-			void i18n.changeLanguage(savedLocale);
-		}
-	}, []);
+		document.documentElement.lang = languageTags[locale];
+	}, [locale]);
 
-	useEffect(() => {
-		const syncLocale = (lng: string) => {
-			document.documentElement.lang = lng;
-			localStorage.setItem('locale', lng);
-		};
-
-		syncLocale(i18n.language);
-		i18n.on('languageChanged', syncLocale);
-		return () => {
-			i18n.off('languageChanged', syncLocale);
-		};
-	}, []);
-
-	return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+	return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 };
 
-export function useI18n() {
-	const { t, i18n: i18nInstance } = useTranslation();
-
-	return {
-		locale: i18nInstance.language,
-		setLocale: (nextLocale: string) => {
-			if (isLocale(nextLocale)) {
-				void i18nInstance.changeLanguage(nextLocale);
-			}
-		},
-		t: (key: string, params?: Record<string, string>) => t(key, params),
-	};
+export function useI18n(): I18nValue {
+	return useContext(I18nContext);
 }

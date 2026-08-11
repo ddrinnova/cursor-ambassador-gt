@@ -5,14 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useI18n } from '@/lib/i18n'
+import { localePath } from '@/lib/locale'
 import LanguageToggle from '@/components/LanguageToggle'
 import { siteConfig } from '@/content/site.config'
-
-const NAV_LINKS = [
-  { href: '/agenda', key: 'nav.agenda' },
-  { href: '/#upcoming', key: 'nav.upcomingEvents' },
-  { href: '/#recaps', key: 'nav.pastEvents' },
-] as const
 
 function useScrollState() {
   const [scrolled, setScrolled] = useState(false)
@@ -30,9 +25,15 @@ function useScrollState() {
 }
 
 export default function Navbar() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const { scrolled } = useScrollState()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const navLinks = [
+    { href: localePath(locale, 'agenda'), key: 'nav.agenda', external: false },
+    { href: localePath(locale, 'eventos'), key: 'nav.events', external: false },
+    { href: siteConfig.lumaEventsUrl, key: 'nav.upcomingEvents', external: true },
+  ] as const
 
   const closeMobile = useCallback(() => setMobileOpen(false), [])
 
@@ -59,11 +60,15 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link
+            href={localePath(locale, '/')}
+            className="flex items-center gap-3 group"
+            aria-label={`${siteConfig.communityName} — ${t('nav.home')}`}
+          >
             <Image
               src="/cursor-logo.svg"
-              alt="Cursor"
+              alt=""
+              aria-hidden="true"
               width={100}
               height={28}
               priority
@@ -74,23 +79,33 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map(({ href, key }) => (
-              <a
-                key={href}
-                href={href}
-                className="text-sm text-cursor-text-muted hover:text-cursor-text transition-colors"
-              >
-                {t(key)}
-              </a>
-            ))}
+            {navLinks.map(({ href, key, external }) =>
+              external ? (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-cursor-text-muted hover:text-cursor-text transition-colors"
+                >
+                  {t(key)}
+                </a>
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-sm text-cursor-text-muted hover:text-cursor-text transition-colors"
+                >
+                  {t(key)}
+                </Link>
+              ),
+            )}
           </div>
 
-          {/* Right side */}
           <div className="flex items-center gap-3 md:gap-4">
             <a
-              href={siteConfig.lumaUrl}
+              href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex text-sm font-medium px-4 py-2 rounded-full bg-white text-cursor-bg hover:bg-cursor-text hover:text-cursor-bg transition-colors"
@@ -99,7 +114,6 @@ export default function Navbar() {
             </a>
             <LanguageToggle />
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 text-cursor-text-muted hover:text-cursor-text transition-colors"
@@ -111,22 +125,34 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="fixed inset-0 top-16 z-40 bg-cursor-bg backdrop-blur-xl md:hidden">
           <div className="flex flex-col items-center gap-8 pt-12 px-4">
-            {NAV_LINKS.map(({ href, key }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={closeMobile}
-                className="text-xl text-cursor-text-muted hover:text-cursor-text transition-colors"
-              >
-                {t(key)}
-              </a>
-            ))}
+            {navLinks.map(({ href, key, external }) =>
+              external ? (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobile}
+                  className="text-xl text-cursor-text-muted hover:text-cursor-text transition-colors"
+                >
+                  {t(key)}
+                </a>
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={closeMobile}
+                  className="text-xl text-cursor-text-muted hover:text-cursor-text transition-colors"
+                >
+                  {t(key)}
+                </Link>
+              ),
+            )}
             <a
-              href={siteConfig.lumaUrl}
+              href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMobile}

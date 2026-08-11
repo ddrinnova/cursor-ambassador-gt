@@ -4,6 +4,7 @@ export const cursorHackathonGuatemalaRecap: RecapData = {
 	slug: 'cursor-hackathon-guatemala',
 	title: 'Cursor Hackathon Guatemala 2026',
 	date: '7 de marzo de 2026',
+	ogImage: '/og/cursor-hackathon-guatemala.jpg',
 	attendees: 140,
 	summary: [
 		'Más de 140 builders, desarrolladores y entusiastas de la IA se reunieron en la Universidad del Valle de Guatemala para experimentar, colaborar y construir prototipos en solo 7 horas.',

@@ -7,24 +7,73 @@ import { motion } from "framer-motion";
 interface CarouselImage {
   src: string;
   label: string;
+  alt: string;
 }
 
 const CAROUSEL_IMAGES: CarouselImage[] = [
-  { src: "/events/antigua-cursor-gt-2.jpeg", label: "Meetup" },
-  { src: "/events/cafe-cursor-gt-5.jpeg", label: "Café Cursor" },
-  { src: "/events/antigua-cursor-gt-1.jpeg", label: "Meetup" },
-  { src: "/events/cafe-cursor-gt-1.jpeg", label: "Café Cursor" },
-  { src: "/events/primer-meetup-cursor-gt-1.jpeg", label: "Meetup" },
-  { src: "/events/cafe-cursor-gt-3.jpeg", label: "Cafe Cursor" },
-  { src: "/events/antigua-cursor-gt-10.jpeg", label: "Meetup" },
-  { src: "/events/cafe-cursor-gt-10.jpeg", label: "Café Cursor" },
-  { src: "/events/primer-meetup-cursor-gt-2.jpeg", label: "Meetup" },
-  { src: "/events/cafe-cursor-gt-7.jpeg", label: "Café Cursor" },
-  { src: "/events/cursor-hackathon-gt-1.jpeg", label: "Hackathon" },
-  { src: "/events/cursor-hackathon-gt-4.jpeg", label: "Hackathon" },
+  {
+    src: "/events/antigua-cursor-gt-2.jpeg",
+    label: "Meetup",
+    alt: "Asistentes al Cursor Meetup Antigua Guatemala durante una charla",
+  },
+  {
+    src: "/events/cafe-cursor-gt-5.jpeg",
+    label: "Café Cursor",
+    alt: "Sesión de trabajo colaborativo en Café Cursor Guatemala",
+  },
+  {
+    src: "/events/antigua-cursor-gt-1.jpeg",
+    label: "Meetup",
+    alt: "Foto grupal del Cursor Meetup Antigua Guatemala",
+  },
+  {
+    src: "/events/cafe-cursor-gt-1.jpeg",
+    label: "Café Cursor",
+    alt: "Participantes programando en Café Cursor Guatemala",
+  },
+  {
+    src: "/events/primer-meetup-cursor-gt-1.jpeg",
+    label: "Meetup",
+    alt: "Asistentes al primer meetup de Cursor en Ciudad de Guatemala",
+  },
+  {
+    src: "/events/cafe-cursor-gt-3.jpeg",
+    label: "Café Cursor",
+    alt: "Reto Advent of Prompt en Café Cursor Guatemala",
+  },
+  {
+    src: "/events/antigua-cursor-gt-10.jpeg",
+    label: "Meetup",
+    alt: "Materiales y snacks del Cursor Meetup Antigua Guatemala",
+  },
+  {
+    src: "/events/cafe-cursor-gt-10.jpeg",
+    label: "Café Cursor",
+    alt: "Comunidad de developers reunida en Café Cursor Guatemala",
+  },
+  {
+    src: "/events/primer-meetup-cursor-gt-2.jpeg",
+    label: "Meetup",
+    alt: "Foto grupal del primer meetup de Cursor en Guatemala",
+  },
+  {
+    src: "/events/cafe-cursor-gt-7.jpeg",
+    label: "Café Cursor",
+    alt: "Presentación del reto Advent of Prompt en Café Cursor Guatemala",
+  },
+  {
+    src: "/events/cursor-hackathon-gt-1.jpeg",
+    label: "Hackathon",
+    alt: "Auditorio lleno en el Cursor Hackathon Guatemala en la Universidad del Valle de Guatemala",
+  },
+  {
+    src: "/events/cursor-hackathon-gt-4.jpeg",
+    label: "Hackathon",
+    alt: "Equipos construyendo prototipos durante el Cursor Hackathon Guatemala",
+  },
 ];
 
-export const ModernMosaic = () => {
+export const ModernMosaic = ({ label }: { label: string }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -85,6 +134,7 @@ export const ModernMosaic = () => {
 
   return (
     <section
+      aria-label={label}
       className="relative w-full py-4 overflow-hidden bg-cursor-bg"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => {
@@ -118,8 +168,11 @@ export const ModernMosaic = () => {
             <div className="relative w-[280px] h-[200px] sm:w-[340px] sm:h-[240px] md:w-[420px] md:h-[280px] lg:w-[500px] lg:h-[340px] rounded-sm overflow-hidden">
               <Image
                 src={img.src}
-                alt={img.label}
+                alt={index < CAROUSEL_IMAGES.length ? img.alt : ""}
+                aria-hidden={index >= CAROUSEL_IMAGES.length ? true : undefined}
                 fill
+                priority={index < 2}
+                loading={index < 2 ? "eager" : "lazy"}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 unoptimized
                 sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, (max-width: 1024px) 420px, 500px"

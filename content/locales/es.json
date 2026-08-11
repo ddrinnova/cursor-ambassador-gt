@@ -5,7 +5,12 @@
 		"pastEvents": "Eventos Pasados",
 		"agenda": "Agenda",
 		"communityName": "Guatemala",
-		"toggleMenu": "Abrir menú"
+		"toggleMenu": "Abrir menú",
+		"events": "Eventos",
+		"skipToContent": "Saltar al contenido",
+		"home": "Inicio",
+		"languageLabel": "Idioma",
+		"switchToEnglish": "Ver el sitio en inglés"
 	},
 	"countdown": {
 		"live": "En curso",
@@ -26,10 +31,11 @@
 		"ctaHint": "Cupo limitado · asegurate tu lugar"
 	},
 	"hero": {
-		"title": "Únete a la comunidad de Cursor Guatemala",
+		"title": "Cursor Guatemala, la comunidad de AI developers",
 		"subtitle": "Explora y conecta con la comunidad de Cursor Guatemala en meetups, hackathons, coworking y más.",
 		"joinNow": "Únete ahora",
-		"exploreEvents": "Explora eventos"
+		"exploreEvents": "Explora eventos",
+		"galleryLabel": "Fotos de eventos de Cursor Guatemala"
 	},
 	"activities": {
 		"heading": "Lo que estamos haciendo en Guatemala.",
@@ -49,7 +55,8 @@
 		"hackathons": {
 			"title": "Hackathons",
 			"description": "Competencias de desarrollo durante todo un fin de semana. Diseña y lanza proyectos reales, gana premios y forma equipo con otros profesionales del país."
-		}
+		},
+		"imageAlt": "{title} de Cursor Guatemala"
 	},
 	"home": {
 		"featured": "Destacado",
@@ -80,7 +87,8 @@
 		"allEvents": "Todos los eventos en Luma",
 		"madeWith": "Hecho con Cursor por ambassadors en Guatemala",
 		"joinNext": "Únete al próximo evento",
-		"followUs": "Sigue a Cursor en X"
+		"followUs": "Sigue a Cursor en X",
+		"partnerLogoAlt": "Logo de {name}, partner de Cursor Guatemala"
 	},
 	"featured": {
 		"defaultDescription": "Un taller práctico para builders que quieren aprender Cursor con flujos de trabajo reales."
@@ -102,7 +110,14 @@
 		"photoLabel": "Foto {index} de {total}",
 		"backHome": "Volver al inicio",
 		"hostedAt": "Organizado en",
-		"photoGallery": "Galería de fotos"
+		"photoGallery": "Galería de fotos",
+		"aboutHeading": "Sobre el evento",
+		"relatedHeading": "Otros eventos de Cursor Guatemala",
+		"nextStepsHeading": "Únete a la comunidad",
+		"nextStepsBody": "Cursor Guatemala organiza meetups, hackathons y workshops de inteligencia artificial durante todo el año en Ciudad de Guatemala y Antigua.",
+		"joinCommunity": "Únete a la comunidad en WhatsApp",
+		"seeUpcoming": "Ver próximos eventos en Luma",
+		"allEvents": "Ver todos los eventos"
 	},
 	"photos": {
 		"title": "Nota sobre fotos",
@@ -137,5 +152,36 @@
 	"notFound": {
 		"message": "Esta página no existe.",
 		"backHome": "Volver a {communityName}"
+	},
+	"seo": {
+		"homeTitle": "Cursor Guatemala | Comunidad de AI Developers en Guatemala",
+		"homeDescription": "Cursor Guatemala es la comunidad de developers y AI builders que organiza meetups, hackathons, workshops y Café Cursor en Ciudad de Guatemala y Antigua Guatemala.",
+		"eventsTitle": "Eventos de Cursor en Guatemala | Meetups y Hackathons de IA",
+		"eventsDescription": "Meetups, hackathons, workshops y Café Cursor organizados por Cursor Guatemala. Revisa los recaps de cada evento de inteligencia artificial en Ciudad de Guatemala y Antigua.",
+		"notFoundTitle": "Página no encontrada",
+		"notFoundDescription": "La página que buscas no existe. Vuelve al inicio para conocer la comunidad y los eventos de Cursor Guatemala."
+	},
+	"about": {
+		"heading": "¿Qué es Cursor Guatemala?",
+		"body": "Cursor Guatemala es la comunidad de developers, AI builders, founders y estudiantes que usan Cursor para programar con inteligencia artificial. Nos reunimos en Ciudad de Guatemala y Antigua Guatemala para aprender AI coding, compartir proyectos y construir en comunidad.",
+		"secondary": "La comunidad la organizan Cursor Ambassadors y community builders locales. Desde 2025 hemos realizado meetups, workshops, ediciones de Café Cursor y el Cursor Hackathon Guatemala, que reunió a más de 140 builders en la Universidad del Valle de Guatemala.",
+		"eventsLink": "Conoce todos los eventos de Cursor en Guatemala"
+	},
+	"events": {
+		"heading": "Eventos de Cursor en Guatemala",
+		"intro": "Estos son los meetups, hackathons y ediciones de Café Cursor que hemos organizado con la comunidad de inteligencia artificial en Guatemala. Cada evento tiene su propio recap con fotos, speakers y resultados.",
+		"pastHeading": "Eventos pasados",
+		"upcomingHeading": "Próximos eventos",
+		"noUpcoming": "Estamos preparando la siguiente fecha. Revisa Luma o únete al grupo de WhatsApp para enterarte primero.",
+		"formats": {
+			"meetup": "Meetup",
+			"hackathon": "Hackathon",
+			"cafe": "Café Cursor",
+			"workshop": "Workshop",
+			"coworking": "Coworking Day"
+		}
+	},
+	"faq": {
+		"heading": "Preguntas frecuentes sobre Cursor Guatemala"
 	}
 }

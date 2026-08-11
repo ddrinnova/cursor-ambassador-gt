@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SlideLayout from '@/modules/slides/components/SlideLayout';
 import SlideContent from '@/modules/slides/components/SlideContent';
@@ -6,6 +7,10 @@ import { exampleDeck, totalExampleSlides } from '@/modules/slides/content/exampl
 interface SlidePageProps {
 	params: Promise<{ id: string }>;
 }
+
+export const metadata: Metadata = {
+	robots: { index: false, follow: false },
+};
 
 export function generateStaticParams() {
 	return Array.from({ length: totalExampleSlides }, (_, i) => ({

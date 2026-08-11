@@ -4,6 +4,7 @@ export const cafeCursorGuatemalaRecap: RecapData = {
 	slug: 'cafe-cursor-guatemala',
 	title: 'Cafe Cursor Guatemala',
 	date: '13 de diciembre de 2025',
+	ogImage: '/og/cafe-cursor-guatemala.jpg',
 	summary: [
 		'Realizamos nuestro primer Cafe Cursor en Guatemala y la energía fue increíble. Junto a Diego Rosales y la comunidad Cursor, exploramos el reto Advent of Prompt, diseñado para aprender, experimentar y compartir ideas sobre IA.',
 		'Este evento reforzó algo importante: el aprendizaje accesible y práctico de IA une a las personas. Nuestro participante más joven tenía solo 14 años — prueba de que el vibe coding no tiene edad.',

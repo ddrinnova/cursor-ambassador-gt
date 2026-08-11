@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ambassadors } from '@/content/ambassadors';
-import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
 import type { Ambassador } from '@/lib/types';
 
@@ -84,6 +83,7 @@ const AmbassadorSection: React.FC = () => {
 
 	return (
 		<motion.section
+			aria-labelledby="ambassadors-heading"
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: '-50px' }}
@@ -93,7 +93,10 @@ const AmbassadorSection: React.FC = () => {
 			<p className="text-xs uppercase tracking-wider text-cursor-text-muted font-medium mb-2 text-center">
 				{t('ambassadors.subtitle')}
 			</p>
-			<h2 className="text-2xl md:text-3xl font-bold text-cursor-text mb-8 text-center">
+			<h2
+				id="ambassadors-heading"
+				className="text-2xl md:text-3xl font-bold text-cursor-text mb-8 text-center"
+			>
 				{t('ambassadors.heading')}
 			</h2>
 

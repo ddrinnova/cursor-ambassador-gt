@@ -1,5 +1,7 @@
 export type LocaleCode = string;
 
+export type EventFormat = 'meetup' | 'hackathon' | 'cafe' | 'workshop' | 'coworking';
+
 export interface EventAgendaItem {
 	time: string;
 	title: string;
@@ -11,6 +13,7 @@ export interface CursorEvent {
 	id: string;
 	title: string;
 	titleLocal?: string;
+	/** ISO 8601 date (YYYY-MM-DD) used for schema.org and sorting. */
 	date: string;
 	displayDate: string;
 	displayDates?: Record<string, string>;
@@ -18,6 +21,9 @@ export interface CursorEvent {
 	attendees?: number;
 	capacity?: number;
 	location: string;
+	/** City on its own, for schema.org addressLocality and local SEO copy. */
+	city: string;
+	format: EventFormat;
 	description?: string;
 	descriptions?: Record<string, string>;
 	lumaUrl?: string;
@@ -115,6 +121,7 @@ export interface RecapResource {
 }
 
 export interface RecapLocaleData {
+	title?: string;
 	date?: string;
 	summary?: string[];
 	speakerTopics?: string[];
@@ -125,6 +132,8 @@ export interface RecapData {
 	slug: string;
 	title: string;
 	date: string;
+	/** Landscape 1200x630 crop used for Open Graph and Twitter cards. */
+	ogImage?: string;
 	attendees?: number;
 	summary: string[];
 	host?: { name: string; logo: string; url?: string };

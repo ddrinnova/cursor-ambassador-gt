@@ -4,6 +4,7 @@ export const cursorMeetupAntiguaRecap: RecapData = {
 	slug: 'cursor-meetup-antigua',
 	title: 'Cursor Meetup Antigua Guatemala',
 	date: '22 de marzo de 2026',
+	ogImage: '/og/cursor-meetup-antigua.jpg',
 	summary: [
 		'Lo que está pasando con IA + Devs en Guatemala se siente diferente. El Cursor Meetup Antigua fue la prueba de eso.',
 		'Personas construyendo, experimentando y aprendiendo juntas en tiempo real. Un Cursor Field Engineer se unió para compartir su visión sobre el futuro de la ingeniería de software en la era de la IA, junto a charlas, live coding y networking.',

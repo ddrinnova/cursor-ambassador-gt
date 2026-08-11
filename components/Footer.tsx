@@ -3,14 +3,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import { localePath } from '@/lib/locale';
 import { siteConfig } from '@/content/site.config';
 import { upcomingEvents } from '@/content/events';
 import Partners from '@/components/Partners';
 
 const Footer: React.FC = () => {
-	const { t } = useI18n();
+	const { t, locale } = useI18n();
 	const nextEvent = upcomingEvents[0];
 
 	return (
@@ -29,7 +31,8 @@ const Footer: React.FC = () => {
 					<div className="flex items-center gap-2 mb-2">
 						<Image
 							src="/cursor-logo.svg"
-							alt="Cursor"
+							alt=""
+							aria-hidden="true"
 							width={90}
 							height={24}
 							className="h-5 w-auto"
@@ -44,15 +47,30 @@ const Footer: React.FC = () => {
 				</div>
 
 				{/* Community links */}
-				<div className="flex flex-col gap-2.5">
+				<nav aria-label={siteConfig.communityName} className="flex flex-col gap-2.5">
+					<Link
+						href={localePath(locale, 'eventos')}
+						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors"
+					>
+						{t('events.heading')}
+					</Link>
 					<a
-						href={siteConfig.lumaUrl}
+						href={siteConfig.lumaEventsUrl}
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
 					>
 						{t('footer.allEvents')}
-						<ExternalLink className="w-3 h-3" />
+						<ExternalLink className="w-3 h-3" aria-hidden="true" />
+					</a>
+					<a
+						href={siteConfig.whatsappUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
+					>
+						{t('recap.joinCommunity')}
+						<ExternalLink className="w-3 h-3" aria-hidden="true" />
 					</a>
 					<a
 						href={siteConfig.cursorCommunityUrl}
@@ -61,32 +79,30 @@ const Footer: React.FC = () => {
 						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
 					>
 						{t('footer.community')}
-						<ExternalLink className="w-3 h-3" />
+						<ExternalLink className="w-3 h-3" aria-hidden="true" />
 					</a>
 					<a
-						href="https://x.com/cursor_ai"
+						href={siteConfig.cursorXUrl}
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
 					>
 						{t('footer.followUs')}
-						<ExternalLink className="w-3 h-3" />
+						<ExternalLink className="w-3 h-3" aria-hidden="true" />
 					</a>
-				</div>
+				</nav>
 
 				{/* CTA */}
 				<div className="md:text-right">
-					{nextEvent?.lumaUrl && (
-						<a
-							href={nextEvent.lumaUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f54e00] text-white rounded-md hover:bg-[#e04500] transition-colors text-sm font-medium"
-						>
-							{t('footer.joinNext')}
-							<ExternalLink className="w-3.5 h-3.5" />
-						</a>
-					)}
+					<a
+						href={nextEvent?.lumaUrl ?? siteConfig.lumaEventsUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f54e00] text-white rounded-md hover:bg-[#e04500] transition-colors text-sm font-medium"
+					>
+						{t('footer.joinNext')}
+						<ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+					</a>
 				</div>
 			</div>
 

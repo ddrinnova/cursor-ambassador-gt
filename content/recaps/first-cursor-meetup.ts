@@ -4,6 +4,7 @@ export const firstCursorMeetupRecap: RecapData = {
 	slug: 'first-cursor-meetup',
 	title: 'Primer Meetup de Cursor en Guatemala',
 	date: '31 de agosto de 2025',
+	ogImage: '/og/first-cursor-meetup.jpg',
 	summary: [
 		'Realizamos con éxito nuestro primer Cursor Meetup en Guatemala. Junto a Diego V. Rosales y Eleanor Menchu Melgar, compartimos fundamentos de IA, cómo usar Cursor para optimizar el ciclo de desarrollo y consejos prácticos de prompt engineering.',
 		'Este fue solo el comienzo. La respuesta de la comunidad fue increíble y sentó las bases de todo lo que siguió: más meetups, talleres y el primer hackathon de IA en Centroamérica.',
@@ -33,6 +34,7 @@ export const firstCursorMeetupRecap: RecapData = {
 	],
 	translations: {
 		en: {
+			title: 'First Cursor Meetup in Guatemala',
 			date: 'August 31, 2025',
 			summary: [
 				'We successfully hosted our very first Cursor Meetup in Guatemala. Alongside co-founder and friend Diego V. Rosales and Eleanor Menchu Melgar, we shared insights on the Fundamentals of AI, how to use Cursor to smooth the development cycle, and practical tips on prompt engineering.',

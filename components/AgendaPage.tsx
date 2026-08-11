@@ -9,9 +9,10 @@ import Footer from '@/components/Footer';
 import EventCountdown from '@/components/EventCountdown';
 import { coworkingDay } from '@/content/coworking-day';
 import { events } from '@/content/events';
-import { useI18n } from '@/lib/i18n';
+import { I18nProvider, useI18n } from '@/lib/i18n';
+import { localePath, type Locale } from '@/lib/locale';
 
-const AgendaPage: React.FC = () => {
+const AgendaPageContent: React.FC = () => {
 	const { t, locale } = useI18n();
 	const [downloading, setDownloading] = useState(false);
 	const event = events.find((e) => e.id === 'cursor-coworking-day-guatemala');
@@ -37,7 +38,7 @@ const AgendaPage: React.FC = () => {
 
 			<div className="max-w-6xl mx-auto px-6 md:px-10 pt-28 pb-20">
 				<Link
-					href="/#upcoming"
+					href={`${localePath(locale, '/')}#upcoming`}
 					className="inline-flex items-center gap-2 text-sm text-cursor-text-muted hover:text-cursor-text transition-colors mb-8"
 				>
 					<ArrowLeft className="w-4 h-4" />
@@ -221,6 +222,14 @@ const AgendaPage: React.FC = () => {
 				<Footer />
 			</div>
 		</main>
+	);
+};
+
+const AgendaPage: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
+	return (
+		<I18nProvider locale={locale}>
+			<AgendaPageContent />
+		</I18nProvider>
 	);
 };
 

@@ -5,7 +5,12 @@
 		"pastEvents": "Past Events",
 		"agenda": "Agenda",
 		"communityName": "Guatemala",
-		"toggleMenu": "Toggle menu"
+		"toggleMenu": "Toggle menu",
+		"events": "Events",
+		"skipToContent": "Skip to content",
+		"home": "Home",
+		"languageLabel": "Language",
+		"switchToSpanish": "View the site in Spanish"
 	},
 	"countdown": {
 		"live": "Happening now",
@@ -26,10 +31,11 @@
 		"ctaHint": "Limited spots · secure yours"
 	},
 	"hero": {
-		"title": "Join the Cursor Guatemala community",
+		"title": "Cursor Guatemala, the AI developer community",
 		"subtitle": "Explore and connect with the Cursor Guatemala community at meetups, hackathons, coworking sessions, and more.",
 		"joinNow": "Join now",
-		"exploreEvents": "Explore events"
+		"exploreEvents": "Explore events",
+		"galleryLabel": "Photos from Cursor Guatemala events"
 	},
 	"activities": {
 		"heading": "What we're doing in Guatemala.",
@@ -49,7 +55,8 @@
 		"hackathons": {
 			"title": "Hackathons",
 			"description": "Weekend-long build competitions. Design and launch real projects, win prizes, and team up with other professionals across the country."
-		}
+		},
+		"imageAlt": "{title} hosted by Cursor Guatemala"
 	},
 	"home": {
 		"featured": "Featured",
@@ -80,7 +87,8 @@
 		"allEvents": "All events on Luma",
 		"madeWith": "Made with Cursor by ambassadors in Guatemala 🇬🇹",
 		"joinNext": "Join the next event",
-		"followUs": "Follow Cursor on X"
+		"followUs": "Follow Cursor on X",
+		"partnerLogoAlt": "{name} logo, Cursor Guatemala partner"
 	},
 	"featured": {
 		"defaultDescription": "A practical, hands-on workshop series for builders who want to learn Cursor with real workflows."
@@ -102,7 +110,14 @@
 		"photoLabel": "Photo {index} of {total}",
 		"backHome": "Back to home",
 		"hostedAt": "Hosted at",
-		"photoGallery": "Photo gallery"
+		"photoGallery": "Photo gallery",
+		"aboutHeading": "About the event",
+		"relatedHeading": "More Cursor Guatemala events",
+		"nextStepsHeading": "Join the community",
+		"nextStepsBody": "Cursor Guatemala hosts AI meetups, hackathons and workshops all year long in Guatemala City and Antigua.",
+		"joinCommunity": "Join the community on WhatsApp",
+		"seeUpcoming": "See upcoming events on Luma",
+		"allEvents": "See all events"
 	},
 	"photos": {
 		"title": "A note on photos",
@@ -137,5 +152,36 @@
 	"notFound": {
 		"message": "This page doesn't exist.",
 		"backHome": "Back to {communityName}"
+	},
+	"seo": {
+		"homeTitle": "Cursor Guatemala | AI Developer Community in Guatemala",
+		"homeDescription": "Cursor Guatemala is the community of developers and AI builders running meetups, hackathons, workshops and Café Cursor in Guatemala City and Antigua Guatemala.",
+		"eventsTitle": "Cursor Events in Guatemala | AI Meetups and Hackathons",
+		"eventsDescription": "Meetups, hackathons, workshops and Café Cursor hosted by Cursor Guatemala. Read the recap of every AI event in Guatemala City and Antigua.",
+		"notFoundTitle": "Page not found",
+		"notFoundDescription": "This page doesn't exist. Head back home to explore the Cursor Guatemala community and its events."
+	},
+	"about": {
+		"heading": "What is Cursor Guatemala?",
+		"body": "Cursor Guatemala is the community of developers, AI builders, founders and students who use Cursor to code with artificial intelligence. We meet in Guatemala City and Antigua Guatemala to learn AI coding, share projects and build together.",
+		"secondary": "The community is organized by Cursor Ambassadors and local community builders. Since 2025 we have hosted meetups, workshops, Café Cursor editions and the Cursor Hackathon Guatemala, which brought together more than 140 builders at Universidad del Valle de Guatemala.",
+		"eventsLink": "Browse every Cursor event in Guatemala"
+	},
+	"events": {
+		"heading": "Cursor Events in Guatemala",
+		"intro": "These are the meetups, hackathons and Café Cursor editions we have hosted with Guatemala's artificial intelligence community. Every event has its own recap with photos, speakers and results.",
+		"pastHeading": "Past events",
+		"upcomingHeading": "Upcoming events",
+		"noUpcoming": "We're setting the next date. Check Luma or join the WhatsApp group to hear about it first.",
+		"formats": {
+			"meetup": "Meetup",
+			"hackathon": "Hackathon",
+			"cafe": "Café Cursor",
+			"workshop": "Workshop",
+			"coworking": "Coworking Day"
+		}
+	},
+	"faq": {
+		"heading": "Frequently asked questions about Cursor Guatemala"
 	}
 }

@@ -33,7 +33,7 @@ const Partners: React.FC = () => {
 						<div className={`relative ${partner.logoHeight ?? 'h-14'} w-full`}>
 							<Image
 								src={partner.logo}
-								alt={partner.name}
+								alt={t('footer.partnerLogoAlt', { name: partner.name })}
 								fill
 								className="object-contain"
 								sizes="(max-width: 768px) 45vw, 30vw"

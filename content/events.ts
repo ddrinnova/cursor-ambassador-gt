@@ -11,6 +11,8 @@ export const events: CursorEvent[] = [
 		time: '09:00 – 18:00',
 		capacity: 75,
 		location: 'Campus Tec · Mountain View · Nivel 2 · Salón 204, Ciudad de Guatemala',
+		city: 'Ciudad de Guatemala',
+		format: 'coworking',
 		description:
 			'Un día completo para developers, founders y builders que construyen con IA: charlas, coworking, lightning talks, mentoring y comunidad en un solo espacio.',
 		descriptions: {
@@ -132,6 +134,8 @@ export const events: CursorEvent[] = [
 		displayDate: '22 de marzo de 2026',
 		displayDates: { en: 'March 22, 2026', es: '22 de marzo de 2026' },
 		location: 'Antigua Guatemala',
+		city: 'Antigua Guatemala',
+		format: 'meetup',
 		recapPath: '/recaps/cursor-meetup-antigua',
 		thumbnail: '/events/antigua-cursor-gt-1.jpeg',
 		galleryImages: [
@@ -162,6 +166,8 @@ export const events: CursorEvent[] = [
 		displayDates: { en: 'March 7, 2026', es: '7 de marzo de 2026' },
 		attendees: 140,
 		location: 'Universidad del Valle de Guatemala, Ciudad de Guatemala',
+		city: 'Ciudad de Guatemala',
+		format: 'hackathon',
 		recapPath: '/recaps/cursor-hackathon-guatemala',
 		thumbnail: '/events/cursor-hackathon-gt-1.jpeg',
 		galleryImages: [
@@ -184,6 +190,8 @@ export const events: CursorEvent[] = [
 		displayDate: '13 de diciembre de 2025',
 		displayDates: { en: 'December 13, 2025', es: '13 de diciembre de 2025' },
 		location: 'Ciudad de Guatemala, Guatemala',
+		city: 'Ciudad de Guatemala',
+		format: 'cafe',
 		recapPath: '/recaps/cafe-cursor-guatemala',
 		thumbnail: '/events/cafe-cursor-gt-1.jpeg',
 		galleryImages: [
@@ -208,6 +216,8 @@ export const events: CursorEvent[] = [
 		displayDate: '31 de agosto de 2025',
 		displayDates: { en: 'August 31, 2025', es: '31 de agosto de 2025' },
 		location: 'Ciudad de Guatemala, Guatemala',
+		city: 'Ciudad de Guatemala',
+		format: 'meetup',
 		recapPath: '/recaps/first-cursor-meetup',
 		thumbnail: '/events/primer-meetup-cursor-gt-1.jpeg',
 		galleryImages: [
@@ -221,3 +231,10 @@ export const events: CursorEvent[] = [
 
 export const upcomingEvents = events.filter((event) => event.status === 'upcoming');
 export const pastEvents = events.filter((event) => event.status === 'past');
+
+/** Recap slug -> event, so recap pages can reuse the event's structured data. */
+export const eventByRecapSlug = new Map(
+	events
+		.filter((event) => event.recapPath)
+		.map((event) => [event.recapPath!.replace('/recaps/', ''), event] as const),
+);

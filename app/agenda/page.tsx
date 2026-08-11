@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
 import AgendaPage from '@/components/AgendaPage';
 import { coworkingDay } from '@/content/coworking-day';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-	title: `Agenda · ${coworkingDay.title}`,
+const locale = 'es';
+
+export const metadata: Metadata = buildPageMetadata({
+	locale,
+	path: 'agenda',
+	title: `Agenda · ${coworkingDay.titleLocal} | Cursor Guatemala`,
 	description: coworkingDay.description.es,
-	openGraph: {
-		title: `Agenda · ${coworkingDay.titleLocal}`,
-		description: coworkingDay.description.es,
-		images: [{ url: '/events/coworking-day/flyer-event.png', alt: 'Coworking & Lightning Talks' }],
+	image: {
+		url: '/events/coworking-day/flyer-event.png',
+		alt: 'Coworking & Lightning Talks — Cursor Coworking Day Guatemala',
 	},
-};
+});
 
 export default function Page() {
-	return <AgendaPage />;
+	return <AgendaPage locale={locale} />;
 }

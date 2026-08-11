@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPhotos } from '@/lib/photos';
 import { useI18n } from '@/lib/i18n';
+import { localePath } from '@/lib/locale';
 
 const WorldEventsCarousel: React.FC = () => {
 	const { t, locale } = useI18n();
@@ -46,7 +47,6 @@ const WorldEventsCarousel: React.FC = () => {
 							fill
 							className="object-cover"
 							sizes="(max-width: 1024px) 100vw, 60vw"
-							priority
 							unoptimized
 						/>
 					</motion.div>
@@ -92,7 +92,7 @@ const WorldEventsCarousel: React.FC = () => {
 					</p>
 					{currentPhoto.recapPath && (
 						<Link
-							href={currentPhoto.recapPath}
+							href={localePath(locale, currentPhoto.recapPath)}
 							className="inline-flex items-center gap-2 text-sm text-[#f54e00] hover:text-[#f54e00]/80 transition-colors font-medium mb-6 group"
 						>
 							<span>{t('home.viewRecap')}</span>
@@ -109,8 +109,11 @@ const WorldEventsCarousel: React.FC = () => {
 					<div className="flex gap-2.5 overflow-x-auto pb-1">
 						{photos.map((photo, index) => (
 							<button
-								key={index}
+								key={photo.src}
+								type="button"
 								onClick={() => setCurrentIndex(index)}
+								aria-label={photo.alt}
+								aria-current={index === currentIndex ? 'true' : undefined}
 								className={`relative w-16 h-16 rounded-md overflow-hidden shrink-0 border-2 transition-all ${
 									index === currentIndex
 										? 'border-[#f54e00] scale-95 shadow-md shadow-[#f54e00]/25'
@@ -119,7 +122,8 @@ const WorldEventsCarousel: React.FC = () => {
 							>
 								<Image
 									src={photo.src}
-									alt={photo.alt}
+									alt=""
+									aria-hidden="true"
 									fill
 									className="object-cover"
 									sizes="64px"
