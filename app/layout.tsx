@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/react';
 import { siteConfig } from '@/content/site.config';
 import { buildRootMetadata } from '@/lib/seo';
 import './globals.css';
@@ -23,7 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</noscript>
 
 				{children}
-				<Analytics />
 
 				{/* Google Tag Manager */}
 				<Script id="google-tag-manager" strategy="afterInteractive">
