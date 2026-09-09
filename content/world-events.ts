@@ -2,6 +2,14 @@ import { WorldEventPhoto } from '@/lib/types';
 
 export const worldEventPhotos: WorldEventPhoto[] = [
 	{
+		src: '/events/Tec-Co-work-Day/21bf65fc-d802-4934-81bf-04122ae9f790.JPG',
+		location: 'Ciudad de Guatemala',
+		date: '1 de agosto de 2026',
+		dates: { es: '1 de agosto de 2026', en: 'August 1, 2026' },
+		alt: 'Cursor Coworking Day Guatemala',
+		recapPath: '/recaps/cursor-coworking-day-guatemala',
+	},
+	{
 		src: '/events/antigua-cursor-gt-1.jpeg',
 		location: 'Antigua Guatemala',
 		date: '22 de marzo de 2026',

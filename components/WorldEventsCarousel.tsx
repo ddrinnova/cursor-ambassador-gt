@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -13,6 +13,14 @@ const WorldEventsCarousel: React.FC = () => {
 	const { t, locale } = useI18n();
 	const photos = getPhotos();
 	const [currentIndex, setCurrentIndex] = useState(0);
+
+	useEffect(() => {
+		if (photos.length === 0) return;
+		const timer = setInterval(() => {
+			setCurrentIndex((prev) => (prev + 1) % photos.length);
+		}, 5000);
+		return () => clearInterval(timer);
+	}, [photos.length]);
 
 	if (photos.length === 0) {
 		return null;
@@ -101,12 +109,12 @@ const WorldEventsCarousel: React.FC = () => {
 					)}
 				</div>
 
-				{/* Thumbnails Row */}
+				{/* Thumbnails Grid */}
 				<div>
 					<p className="text-xs font-semibold text-cursor-text-muted uppercase tracking-wider mb-3">
 						{t('worldEvents.galleryLabel')}
 					</p>
-					<div className="flex gap-2.5 overflow-x-auto pb-1">
+					<div className="grid grid-cols-3 gap-2">
 						{photos.map((photo, index) => (
 							<button
 								key={photo.src}
@@ -114,9 +122,9 @@ const WorldEventsCarousel: React.FC = () => {
 								onClick={() => setCurrentIndex(index)}
 								aria-label={photo.alt}
 								aria-current={index === currentIndex ? 'true' : undefined}
-								className={`relative w-16 h-16 rounded-md overflow-hidden shrink-0 border-2 transition-all ${
+								className={`relative aspect-square rounded-md overflow-hidden border-2 transition-all ${
 									index === currentIndex
-										? 'border-[#f54e00] scale-95 shadow-md shadow-[#f54e00]/25'
+										? 'border-[#f54e00] shadow-md shadow-[#f54e00]/25'
 										: 'border-transparent hover:border-white/20'
 								}`}
 							>
@@ -126,7 +134,7 @@ const WorldEventsCarousel: React.FC = () => {
 									aria-hidden="true"
 									fill
 									className="object-cover"
-									sizes="64px"
+									sizes="(max-width: 1024px) 33vw, 100px"
 									unoptimized
 								/>
 								<div className={`absolute inset-0 bg-black/30 transition-opacity ${

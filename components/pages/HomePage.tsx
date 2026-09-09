@@ -116,10 +116,10 @@ const HomePage: React.FC<{ locale: Locale }> = ({ locale }) => {
 
 				<div className="max-w-7xl mx-auto px-17 py-16 md:py-24">
 					<AmbassadorSection />
-					<UpcomingEvents />
+					{/* <UpcomingEvents /> */}
 					<SectionDivider />
 					<PastEvents />
-					<FeaturedSection />
+					{/* <FeaturedSection /> */}
 					<SectionDivider />
 					<GlobalEvents />
 					<FaqSection locale={locale} />

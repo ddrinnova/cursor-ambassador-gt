@@ -71,6 +71,11 @@ const CAROUSEL_IMAGES: CarouselImage[] = [
     label: "Hackathon",
     alt: "Equipos construyendo prototipos durante el Cursor Hackathon Guatemala",
   },
+  {
+    src: "/events/Tec-Co-work-Day/21bf65fc-d802-4934-81bf-04122ae9f790.JPG",
+    label: "Coworking",
+    alt: "Asistentes en el Cursor Coworking Day Guatemala en Campus TEC",
+  },
 ];
 
 export const ModernMosaic = ({ label }: { label: string }) => {
